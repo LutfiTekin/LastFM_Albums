@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LastFM Albums</string>
+    <string name="title_home">Albums</string>
+    <string name="title_search">Search</string>
+</resources>
