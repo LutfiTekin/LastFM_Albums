@@ -27,7 +27,7 @@ object NetworkConfigurationModule {
     @Singleton
     @Provides
     @Named(Constants.BASE_URL)
-    fun providesBaseUrl() = "http://ws.audioscrobbler.com/2.0/"
+    fun providesBaseUrl() = "https://ws.audioscrobbler.com/2.0/"
 
     @Singleton
     @Provides

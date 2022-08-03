@@ -13,4 +13,9 @@ object Constants {
     const val CACHE_DIR = "cache_dir"
     const val RESPONSE_CACHE = "response_cache"
     const val CACHE_SIZE = "cache_size"
+
+    const val ALBUM = "album"
+    const val PAGE = "page"
+    const val ARTIST = "artist"
+    const val AUTO_CORRECT = "autocorrect"
 }
