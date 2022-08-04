@@ -5,5 +5,5 @@ import com.squareup.moshi.Json
 
 data class AlbumMatches(
     @Json(name = "album")
-    val album: List<Album>?
+    val album: List<AlbumDTO>?
 )

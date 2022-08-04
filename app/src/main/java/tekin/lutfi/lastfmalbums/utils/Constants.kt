@@ -18,4 +18,6 @@ object Constants {
     const val PAGE = "page"
     const val ARTIST = "artist"
     const val AUTO_CORRECT = "autocorrect"
+
+    const val ALBUM_TABLE = "album_table"
 }

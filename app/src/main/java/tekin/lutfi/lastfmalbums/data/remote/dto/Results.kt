@@ -7,7 +7,7 @@ data class Results(
     @Json(name = "albummatches")
     val albumMatches: AlbumMatches?,
     @Json(name = "@attr")
-    val attr: Attr?,
+    val attribute: Attribute?,
     @Json(name = "opensearch:itemsPerPage")
     val itemsPerPage: String?,
     @Json(name = "opensearch:Query")

@@ -75,4 +75,25 @@ dependencies {
     implementation "com.google.firebase:firebase-config-ktx:21.1.1"
     implementation "com.google.firebase:firebase-config:21.1.1"
 
+    /**
+     * Room
+     */
+    def roomVersion = "2.4.3"
+
+    implementation "androidx.room:room-runtime:$roomVersion"
+
+    // To use Kotlin annotation processing tool (kapt)
+    kapt "androidx.room:room-compiler:$roomVersion"
+
+    // Test helpers
+    testImplementation "androidx.room:room-testing:$roomVersion"
+
+    // Paging 3 Integration
+    implementation "androidx.room:room-paging:2.5.0-alpha02"
+
+    /**
+     * Paging
+     */
+    implementation "androidx.paging:paging-runtime:3.1.1"
+
 }
