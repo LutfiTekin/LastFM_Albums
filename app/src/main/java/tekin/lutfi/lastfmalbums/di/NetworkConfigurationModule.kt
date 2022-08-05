@@ -14,8 +14,15 @@ import okhttp3.HttpUrl
 import okhttp3.Request
 import retrofit2.converter.moshi.MoshiConverterFactory
 import tekin.lutfi.lastfmalbums.utils.Constants
+import tekin.lutfi.lastfmalbums.utils.Constants.API_KEY
+import tekin.lutfi.lastfmalbums.utils.Constants.BASE_URL
 import tekin.lutfi.lastfmalbums.utils.Constants.CACHE_DIR
 import tekin.lutfi.lastfmalbums.utils.Constants.CACHE_SIZE
+import tekin.lutfi.lastfmalbums.utils.Constants.DEFAULT_TIMEOUT
+import tekin.lutfi.lastfmalbums.utils.Constants.FORMAT
+import tekin.lutfi.lastfmalbums.utils.Constants.MOSHI_CONVERTER_FACTORY
+import tekin.lutfi.lastfmalbums.utils.Constants.PAGE_LIMIT
+import tekin.lutfi.lastfmalbums.utils.Constants.RESPONSE_CACHE
 import java.io.File
 import javax.inject.Named
 import javax.inject.Singleton
@@ -26,7 +33,7 @@ object NetworkConfigurationModule {
 
     @Singleton
     @Provides
-    @Named(Constants.BASE_URL)
+    @Named(BASE_URL)
     fun providesBaseUrl() = "https://ws.audioscrobbler.com/2.0/"
 
     @Singleton
@@ -36,33 +43,33 @@ object NetworkConfigurationModule {
 
     @Singleton
     @Provides
-    @Named(Constants.PAGE_LIMIT)
+    @Named(PAGE_LIMIT)
     fun providesPageLimit() = "30"
 
     @Singleton
     @Provides
-    @Named(Constants.DEFAULT_TIMEOUT)
+    @Named(DEFAULT_TIMEOUT)
     fun providesDefaultHttpTimeout() = 20000L
 
     @Singleton
     @Provides
-    @Named(Constants.CACHE_SIZE)
+    @Named(CACHE_SIZE)
     fun provideCacheSize() = 50L * 1024L * 1024L
 
     @Singleton
     @Provides
-    @Named(Constants.MOSHI_CONVERTER_FACTORY)
+    @Named(MOSHI_CONVERTER_FACTORY)
     fun providesMoshiConverter() = MoshiConverterFactory.create()
 
     @Singleton
     @Provides
-    @Named(Constants.FORMAT)
+    @Named(FORMAT)
     fun providesRequestFormat() = "json"
 
 
     @Singleton
     @Provides
-    @Named(Constants.RESPONSE_CACHE)
+    @Named(RESPONSE_CACHE)
     fun providesResponseCache(
         @ApplicationContext context: Context,
         @Named(CACHE_DIR) cacheDir: String,
@@ -71,8 +78,8 @@ object NetworkConfigurationModule {
 
     @Singleton
     @Provides
-    @Named(Constants.API_KEY)
-    fun providesApiKey() = Firebase.remoteConfig.getString(Constants.API_KEY)
+    @Named(API_KEY)
+    fun providesApiKey() = Firebase.remoteConfig.getString(API_KEY)
 
 
 }

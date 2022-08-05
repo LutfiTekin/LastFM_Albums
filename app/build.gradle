@@ -81,15 +81,11 @@ dependencies {
     def roomVersion = "2.4.3"
 
     implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
 
     // To use Kotlin annotation processing tool (kapt)
     kapt "androidx.room:room-compiler:$roomVersion"
 
-    // Test helpers
-    testImplementation "androidx.room:room-testing:$roomVersion"
-
-    // Paging 3 Integration
-    implementation "androidx.room:room-paging:2.5.0-alpha02"
 
     /**
      * Paging
