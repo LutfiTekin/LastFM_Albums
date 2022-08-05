@@ -20,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(private val searchUseCase: SearchUseCase): ViewModel() {
 
-    private val _searchState = MutableStateFlow(AlbumUIState(isLoading = true,list = emptyList()))
+    private val _searchState = MutableStateFlow(AlbumUIState(list = emptyList()))
 
     val searchState: StateFlow<AlbumUIState> = _searchState
 
