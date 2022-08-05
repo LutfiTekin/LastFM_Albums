@@ -2,8 +2,8 @@ package tekin.lutfi.lastfmalbums.ui.home
 
 import tekin.lutfi.lastfmalbums.domain.model.Album
 
-data class AlbumListState(
+data class AlbumUIState(
     val isLoading: Boolean = false,
-    val list: List<Album>,
-    val error: String = ""
+    val list: List<Album>? = null,
+    val error: String? = null
 )

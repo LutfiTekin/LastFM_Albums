@@ -15,14 +15,12 @@ interface LastFMApi {
 
     @GET("?method=album.search")
     suspend fun searchAlbums(
-        @Query(ALBUM) query: String,
-        @Query(PAGE) page: String
+        @Query(ALBUM) query: String
     ): SearchResultDTO
 
     @GET("?method=artist.gettopalbums")
     suspend fun getTopAlbums(
         @Query(ARTIST) artist: String,
-        @Query(PAGE) page: String,
         @Query(AUTO_CORRECT) autoCorrect: String = "1"
     ): TopAlbumsDTO
 

@@ -6,8 +6,8 @@ import tekin.lutfi.lastfmalbums.data.remote.dto.TopAlbumsDTO
 
 interface LastFMAlbumRepository {
 
-    suspend fun searchAlbums(query: String, page: String): SearchResultDTO
+    suspend fun searchAlbums(query: String): SearchResultDTO
 
-    suspend fun getTopAlbums(artist: String, page: String): TopAlbumsDTO
+    suspend fun getTopAlbums(artist: String): TopAlbumsDTO
 
 }

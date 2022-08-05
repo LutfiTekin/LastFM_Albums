@@ -5,7 +5,7 @@ object Constants {
     const val DEFAULT_TIMEOUT = "default_timeout"
     const val PAGE_LIMIT = "limit"
     const val FORMAT = "format"
-    const val API_KEY = "key"
+    const val API_KEY = "api_key"
     const val MOSHI_CONVERTER_FACTORY = "moshi_converter"
     const val API_KEY_INTERCEPTOR = "api_key_interceptor"
     const val LOGGING_INTERCEPTOR = "logging_interceptor"

@@ -8,9 +8,9 @@ import javax.inject.Inject
 
 class LastFMAlbumRepositoryImpl @Inject constructor(private val api: LastFMApi): LastFMAlbumRepository {
 
-    override suspend fun searchAlbums(query: String, page: String): SearchResultDTO =
-        api.searchAlbums(query, page)
+    override suspend fun searchAlbums(query: String): SearchResultDTO =
+        api.searchAlbums(query)
 
-    override suspend fun getTopAlbums(artist: String, page: String): TopAlbumsDTO =
-        api.getTopAlbums(artist, page)
+    override suspend fun getTopAlbums(artist: String): TopAlbumsDTO =
+        api.getTopAlbums(artist)
 }

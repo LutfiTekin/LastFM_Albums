@@ -13,10 +13,10 @@ import javax.inject.Inject
 
 class TopAlbumUseCase @Inject constructor(private val repository: LastFMAlbumRepository) {
 
-    operator fun invoke(artist: String, page: String): Flow<Resource<List<TopAlbum>>> = flow{
+    operator fun invoke(artist: String): Flow<Resource<List<TopAlbum>>> = flow{
         try {
             emit(Resource.Loading())
-            val data = repository.getTopAlbums(artist, page).topAlbums?.albums?.map { it.topAlbum }
+            val data = repository.getTopAlbums(artist).topAlbums?.albums?.map { it.topAlbum }
                 ?: throw Exception()
             emit(Resource.Success(data))
         }catch (e: HttpException){

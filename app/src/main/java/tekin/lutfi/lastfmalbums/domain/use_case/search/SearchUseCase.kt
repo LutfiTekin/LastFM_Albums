@@ -14,17 +14,18 @@ import javax.inject.Inject
 
 class SearchUseCase @Inject constructor(private val repository: LastFMAlbumRepository) {
 
-    operator fun invoke(query: String, page: String): Flow<Resource<List<Album>>> = flow{
+    operator fun invoke(query: String): Flow<Resource<List<Album>>> = flow{
         try {
             emit(Resource.Loading())
-            val data = repository.searchAlbums(query, page).results?.albumMatches?.album?.map { it.album }
-                ?: throw Exception()
+            val results = repository.searchAlbums(query).results
+            val data = results?.albumMatches?.album?.map { it.album }
+                data ?: throw Exception("Something happened")
             emit(Resource.Success(data))
         }catch (e: HttpException){
             emit(Resource.Error(e.localizedMessage ?: "An error occurred"))
         }catch (e: Exception){
             //TODO handle strings
-            emit(Resource.Error("An error occurred"))
+            emit(Resource.Error(e.message ?: "An error occurred"))
         }
     }
 
