@@ -4,12 +4,12 @@ package tekin.lutfi.lastfmalbums.data.remote.dto
 import com.squareup.moshi.Json
 
 data class OpenSearchQuery(
-    @Json(name = "role")
+    @field:Json(name = "role")
     val role: String?,
-    @Json(name = "searchTerms")
+    @field:Json(name = "searchTerms")
     val searchTerms: String?,
-    @Json(name = "startPage")
+    @field:Json(name = "startPage")
     val startPage: String?,
-    @Json(name = "#text")
+    @field:Json(name = "#text")
     val text: String?
 )

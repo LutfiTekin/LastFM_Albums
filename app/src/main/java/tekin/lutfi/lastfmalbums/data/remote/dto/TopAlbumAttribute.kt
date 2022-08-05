@@ -4,14 +4,14 @@ package tekin.lutfi.lastfmalbums.data.remote.dto
 import com.squareup.moshi.Json
 
 data class TopAlbumAttribute(
-    @Json(name = "artist")
+    @field:Json(name = "artist")
     val artist: String?,
-    @Json(name = "page")
+    @field:Json(name = "page")
     val page: String?,
-    @Json(name = "perPage")
+    @field:Json(name = "perPage")
     val perPage: String?,
-    @Json(name = "total")
+    @field:Json(name = "total")
     val total: String?,
-    @Json(name = "totalPages")
+    @field:Json(name = "totalPages")
     val totalPages: String?
 )

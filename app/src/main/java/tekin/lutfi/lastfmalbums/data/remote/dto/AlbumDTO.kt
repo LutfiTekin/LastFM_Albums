@@ -5,17 +5,17 @@ import com.squareup.moshi.Json
 import tekin.lutfi.lastfmalbums.domain.model.Album
 
 data class AlbumDTO(
-    @Json(name = "artist")
+    @field:Json(name = "artist")
     val artist: String?,
-    @Json(name = "image")
+    @field:Json(name = "image")
     val image: List<AlbumImage>?,
-    @Json(name = "mbid")
+    @field:Json(name = "mbid")
     val mbid: String?,
-    @Json(name = "name")
+    @field:Json(name = "name")
     val name: String?,
-    @Json(name = "streamable")
+    @field:Json(name = "streamable")
     val streamable: String?,
-    @Json(name = "url")
+    @field:Json(name = "url")
     val url: String?
 )
 

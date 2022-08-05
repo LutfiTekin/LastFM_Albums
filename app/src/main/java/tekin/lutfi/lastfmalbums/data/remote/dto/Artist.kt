@@ -4,10 +4,10 @@ package tekin.lutfi.lastfmalbums.data.remote.dto
 import com.squareup.moshi.Json
 
 data class Artist(
-    @Json(name = "mbid")
+    @field:Json(name = "mbid")
     val mbid: String?,
-    @Json(name = "name")
+    @field:Json(name = "name")
     val name: String?,
-    @Json(name = "url")
+    @field:Json(name = "url")
     val url: String?
 )

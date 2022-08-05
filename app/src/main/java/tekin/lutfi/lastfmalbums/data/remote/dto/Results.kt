@@ -4,16 +4,16 @@ package tekin.lutfi.lastfmalbums.data.remote.dto
 import com.squareup.moshi.Json
 
 data class Results(
-    @Json(name = "albummatches")
+    @field:Json(name = "albummatches")
     val albumMatches: AlbumMatches?,
-    @Json(name = "@attr")
+    @field:Json(name = "@attr")
     val attribute: Attribute?,
-    @Json(name = "opensearch:itemsPerPage")
+    @field:Json(name = "opensearch:itemsPerPage")
     val itemsPerPage: String?,
-    @Json(name = "opensearch:Query")
+    @field:Json(name = "opensearch:Query")
     val query: OpenSearchQuery?,
-    @Json(name = "opensearch:startIndex")
+    @field:Json(name = "opensearch:startIndex")
     val startIndex: String?,
-    @Json(name = "opensearch:totalResults")
+    @field:Json(name = "opensearch:totalResults")
     val totalResults: String?
 )
