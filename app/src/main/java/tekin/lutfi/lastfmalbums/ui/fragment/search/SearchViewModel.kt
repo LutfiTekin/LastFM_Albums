@@ -14,15 +14,15 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(private val searchUseCase: SearchUseCase): ViewModel() {
 
-    private val _searchState = MutableStateFlow(UIState<Artist>(list = emptyList()))
+    private val _searchState = MutableStateFlow(UIState<List<Artist>>(data = null))
 
-    val searchState: StateFlow<UIState<Artist>> = _searchState
+    val searchState: StateFlow<UIState<List<Artist>>> = _searchState
 
     fun runSearch(query: String) {
         viewModelScope.launch {
             searchUseCase.searchArtist(query).collect { resource ->
                 when (resource) {
-                    is Resource.Success -> _searchState.value = UIState(list = resource.data)
+                    is Resource.Success -> _searchState.value = UIState(data = resource.data)
                     is Resource.Loading -> _searchState.value = UIState(true)
                     is Resource.Error -> _searchState.value = UIState(error = resource.e.message)
                 }

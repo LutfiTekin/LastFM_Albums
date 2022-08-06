@@ -62,7 +62,7 @@ class SearchFragment : Fragment(), ArtistSelectionListener {
                 searchViewModel.searchState.collect { state ->
                     binding.progressBar.isVisible = state.isLoading
                     if (state.error.isNullOrBlank()) {
-                        artistAdapter.submitList(state.list)
+                        artistAdapter.submitList(state.data)
                     }else {
                         //TODO show error
                     }
@@ -75,6 +75,10 @@ class SearchFragment : Fragment(), ArtistSelectionListener {
 
         searchButton.setOnClickListener {
             val query = searchInput.text.toString()
+            if (query.isBlank()){
+                Toast.makeText(context, getString(R.string.error_empty_search_query), Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             searchViewModel.runSearch(query)
             searchInput.hideKeyboard()
         }

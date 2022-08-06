@@ -7,7 +7,7 @@
     tools:context=".ui.fragment.album_detail.AlbumDetailFragment" >
 
     <include
-        android:id="@+id/include"
+        android:id="@+id/albumItem"
         layout="@layout/list_item_album"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -16,12 +16,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/trackList"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:listitem="@layout/list_item_track"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        tools:listitem="@layout/list_item_track"
+        android:paddingBottom="?actionBarSize"
+        android:clipToPadding="false"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/albumItem" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,3 +8,6 @@ data class TopAlbum(
     val playCount: Int?,
     val url: String?
 )
+
+val TopAlbum.album
+    get() = Album(artist, image, name, emptyList())

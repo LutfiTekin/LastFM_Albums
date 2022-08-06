@@ -25,7 +25,11 @@
         android:id="@+id/albumDetailFragment"
         android:name="tekin.lutfi.lastfmalbums.ui.fragment.album_detail.AlbumDetailFragment"
         android:label="@string/title_album_detail"
-        tools:layout="@layout/album_detail_fragment" />
+        tools:layout="@layout/album_detail_fragment" >
+        <argument
+            android:name="album"
+            app:argType="tekin.lutfi.lastfmalbums.domain.model.Album" />
+    </fragment>
     <fragment
         android:id="@+id/topAlbumsFragment"
         android:name="tekin.lutfi.lastfmalbums.ui.fragment.top_albums.TopAlbumsFragment"
@@ -34,6 +38,9 @@
         <argument
             android:name="artist"
             app:argType="tekin.lutfi.lastfmalbums.domain.model.Artist" />
+        <action
+            android:id="@+id/actionTopAlbumToDetail"
+            app:destination="@id/albumDetailFragment" />
     </fragment>
 
 </navigation>

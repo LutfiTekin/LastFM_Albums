@@ -40,7 +40,7 @@ class TopAlbumViewHolder internal constructor(
 }
 
 interface TopAlbumSelectionListener {
-    fun onTopAlbumSelected(album: TopAlbum)
+    fun onTopAlbumSelected(topAlbum: TopAlbum)
 }
 
 private class TopAlbumsDiffUtil : DiffUtil.ItemCallback<TopAlbum>() {

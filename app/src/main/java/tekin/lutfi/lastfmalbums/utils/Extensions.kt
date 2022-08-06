@@ -36,3 +36,9 @@ fun View.hideKeyboard() {
     val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
     imm?.hideSoftInputFromWindow(windowToken, 0)
 }
+
+fun Int.toSongDuration(): String{
+    val minutes: Int = this / 60
+    val seconds = this.rem(60)
+    return "$minutes:$seconds"
+}

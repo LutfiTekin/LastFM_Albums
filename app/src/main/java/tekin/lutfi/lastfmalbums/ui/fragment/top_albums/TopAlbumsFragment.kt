@@ -1,6 +1,5 @@
 package tekin.lutfi.lastfmalbums.ui.fragment.top_albums
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,14 +10,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import tekin.lutfi.lastfmalbums.R
-import tekin.lutfi.lastfmalbums.databinding.FragmentSearchBinding
 import tekin.lutfi.lastfmalbums.databinding.TopAlbumsFragmentBinding
 import tekin.lutfi.lastfmalbums.domain.model.TopAlbum
+import tekin.lutfi.lastfmalbums.domain.model.album
 import tekin.lutfi.lastfmalbums.ui.adapter.TopAlbumSelectionListener
 import tekin.lutfi.lastfmalbums.ui.adapter.TopAlbumsAdapter
 
@@ -63,7 +63,7 @@ class TopAlbumsFragment : Fragment(), TopAlbumSelectionListener {
                 topAlbumsViewModel.topAlbumState.collect { state ->
                     binding.progressBar.isVisible = state.isLoading
                     if (state.error.isNullOrBlank()) {
-                        topAlbumsAdapter.submitList(state.list)
+                        topAlbumsAdapter.submitList(state.data)
                     } else {
                         //TODO show error
                     }
@@ -82,7 +82,8 @@ class TopAlbumsFragment : Fragment(), TopAlbumSelectionListener {
         topAlbumList.adapter = topAlbumsAdapter
     }
 
-    override fun onTopAlbumSelected(album: TopAlbum) {
-
+    override fun onTopAlbumSelected(topAlbum: TopAlbum) {
+        val action = TopAlbumsFragmentDirections.actionTopAlbumToDetail(topAlbum.album)
+        findNavController().navigate(action)
     }
 }

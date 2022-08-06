@@ -18,15 +18,15 @@ import javax.inject.Inject
 class TopAlbumsViewModel @Inject constructor(private val topAlbumsUseCase: TopAlbumUseCase) :
     ViewModel() {
 
-    private val _topAlbumState = MutableStateFlow(UIState<TopAlbum?>(list = emptyList()))
+    private val _topAlbumState = MutableStateFlow(UIState<List<TopAlbum>?>(data = null))
 
-    val topAlbumState: StateFlow<UIState<TopAlbum?>> = _topAlbumState
+    val topAlbumState: StateFlow<UIState<List<TopAlbum>?>> = _topAlbumState
 
     fun loadTopAlbums(artist: String) {
         viewModelScope.launch {
             topAlbumsUseCase.getTopAlbums(artist).collect { resource ->
                 when (resource) {
-                    is Resource.Success -> _topAlbumState.value = UIState(list = resource.data)
+                    is Resource.Success -> _topAlbumState.value = UIState(data = resource.data)
                     is Resource.Loading -> _topAlbumState.value = UIState(true)
                     is Resource.Error -> _topAlbumState.value = UIState(error = resource.e.message)
                 }
