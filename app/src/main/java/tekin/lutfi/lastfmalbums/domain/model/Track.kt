@@ -9,6 +9,6 @@ data class Track(
 ) {
 
     val durationString: String
-        get() = duration?.toSongDuration() ?: "0:00"
+        get() = duration?.toSongDuration() ?: "n/a"
 
 }

@@ -39,6 +39,8 @@ fun View.hideKeyboard() {
 
 fun Int.toSongDuration(): String{
     val minutes: Int = this / 60
-    val seconds = this.rem(60)
+    var seconds = this.rem(60).toString()
+    if (seconds.length == 1)
+        seconds = "0$seconds"
     return "$minutes:$seconds"
 }
