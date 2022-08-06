@@ -1,14 +1,15 @@
-package tekin.lutfi.lastfmalbums.data.remote.dto
+package tekin.lutfi.lastfmalbums.data.remote.dto.album
 
 
 import com.squareup.moshi.Json
+import tekin.lutfi.lastfmalbums.data.remote.dto.top_album.Image
 import tekin.lutfi.lastfmalbums.domain.model.Album
 
 data class AlbumDTO(
     @field:Json(name = "artist")
     val artist: String?,
     @field:Json(name = "image")
-    val image: List<AlbumImage>?,
+    val image: List<Image>?,
     @field:Json(name = "mbid")
     val mbid: String?,
     @field:Json(name = "name")

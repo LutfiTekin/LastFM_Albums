@@ -1,9 +1,9 @@
-package tekin.lutfi.lastfmalbums.data.remote.dto
+package tekin.lutfi.lastfmalbums.data.remote.dto.artist
 
 
 import com.squareup.moshi.Json
 
-data class AlbumImage(
+data class Image(
     @field:Json(name = "size")
     val size: String?,
     @field:Json(name = "#text")

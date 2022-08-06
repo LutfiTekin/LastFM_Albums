@@ -1,4 +1,4 @@
-package tekin.lutfi.lastfmalbums.data.remote.dto
+package tekin.lutfi.lastfmalbums.data.remote.dto.top_album
 
 
 import com.squareup.moshi.Json
@@ -8,7 +8,7 @@ data class TopAlbumDTO(
     @field:Json(name = "artist")
     val artist: Artist?,
     @field:Json(name = "image")
-    val image: List<AlbumImage>?,
+    val image: List<Image>?,
     @field:Json(name = "mbid")
     val mbid: String?,
     @field:Json(name = "name")

@@ -1,4 +1,4 @@
-package tekin.lutfi.lastfmalbums.ui.dashboard
+package tekin.lutfi.lastfmalbums.ui.search
 
 import android.os.Bundle
 import android.util.Log
@@ -8,14 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import tekin.lutfi.lastfmalbums.databinding.FragmentSearchBinding
-import tekin.lutfi.lastfmalbums.ui.home.AlbumUIState
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {

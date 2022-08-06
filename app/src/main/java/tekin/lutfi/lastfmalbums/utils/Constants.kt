@@ -20,4 +20,6 @@ object Constants {
     const val AUTO_CORRECT = "autocorrect"
 
     const val ALBUM_TABLE = "album_table"
+
+    const val IMAGE_SIZE_LARGE = "large"
 }

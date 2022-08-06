@@ -79,8 +79,7 @@ object NetworkConfigurationModule {
     @Singleton
     @Provides
     @Named(API_KEY)
-    fun providesApiKey() = "f938174428643e3a31477fc7653e4d09"
-    //fun providesApiKey() = Firebase.remoteConfig.getString(API_KEY)
+    fun providesApiKey() = Firebase.remoteConfig.getString(API_KEY)
 
 
 }

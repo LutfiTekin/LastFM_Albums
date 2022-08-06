@@ -1,4 +1,4 @@
-package tekin.lutfi.lastfmalbums
+package tekin.lutfi.lastfmalbums.ui
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -8,6 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
+import tekin.lutfi.lastfmalbums.R
 import tekin.lutfi.lastfmalbums.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
