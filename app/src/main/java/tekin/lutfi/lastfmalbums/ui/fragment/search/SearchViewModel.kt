@@ -22,10 +22,9 @@ class SearchViewModel @Inject constructor(private val searchUseCase: SearchUseCa
         viewModelScope.launch {
             searchUseCase.searchArtist(query).collect { resource ->
                 when (resource) {
-                    is Resource.Success ->
-                        _searchState.value = UIState(false,resource.data)
+                    is Resource.Success -> _searchState.value = UIState(list = resource.data)
                     is Resource.Loading -> _searchState.value = UIState(true)
-                    is Resource.Error -> _searchState.value = UIState(false,null,resource.e.message)
+                    is Resource.Error -> _searchState.value = UIState(error = resource.e.message)
                 }
             }
         }

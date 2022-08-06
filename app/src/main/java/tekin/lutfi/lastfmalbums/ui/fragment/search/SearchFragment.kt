@@ -1,7 +1,6 @@
 package tekin.lutfi.lastfmalbums.ui.fragment.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,12 +12,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import tekin.lutfi.lastfmalbums.R
 import tekin.lutfi.lastfmalbums.databinding.FragmentSearchBinding
 import tekin.lutfi.lastfmalbums.domain.model.Artist
 import tekin.lutfi.lastfmalbums.ui.adapter.ArtistAdapter
 import tekin.lutfi.lastfmalbums.ui.adapter.ArtistSelectionListener
+import tekin.lutfi.lastfmalbums.utils.Constants
 import tekin.lutfi.lastfmalbums.utils.hideKeyboard
 
 @AndroidEntryPoint
@@ -88,8 +90,8 @@ class SearchFragment : Fragment(), ArtistSelectionListener {
     }
 
     override fun onArtistSelected(artist: Artist) {
-        //TODO go to top albums page
-        Toast.makeText(context, "${artist.name} selected",Toast.LENGTH_SHORT).show()
+        val action = SearchFragmentDirections.actionLaunchTopAlbums(artist)
+        findNavController().navigate(action)
     }
 
 }
