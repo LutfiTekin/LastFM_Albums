@@ -16,5 +16,10 @@
         android:name="tekin.lutfi.lastfmalbums.ui.search.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/topAlbumsFragment"
+        android:name="tekin.lutfi.lastfmalbums.TopAlbumsFragment"
+        android:label="top_albums_fragment"
+        tools:layout="@layout/top_albums_fragment" />
 
 </navigation>

@@ -2,6 +2,7 @@ package tekin.lutfi.lastfmalbums.di
 
 import android.content.Context
 import androidx.room.Room
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

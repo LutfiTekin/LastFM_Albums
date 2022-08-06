@@ -7,8 +7,8 @@ import tekin.lutfi.lastfmalbums.utils.Constants
 @Dao
 interface AlbumDao {
 
-    @Query("SELECT * FROM ${Constants.ALBUM_TABLE} LIMIT :size ")
-    suspend fun getAlbums(size: Int): List<AlbumEntity>
+    @Query("SELECT * FROM ${Constants.ALBUM_TABLE}")
+    suspend fun getAlbums(): List<AlbumEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addAlbum(album: AlbumEntity)
