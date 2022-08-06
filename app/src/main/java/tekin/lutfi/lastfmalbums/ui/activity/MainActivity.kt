@@ -1,4 +1,4 @@
-package tekin.lutfi.lastfmalbums.ui
+package tekin.lutfi.lastfmalbums.ui.activity
 
 import android.os.Bundle
 import androidx.activity.viewModels

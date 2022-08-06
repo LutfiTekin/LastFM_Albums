@@ -1,4 +1,4 @@
-package tekin.lutfi.lastfmalbums.ui.search
+package tekin.lutfi.lastfmalbums.ui.fragment.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

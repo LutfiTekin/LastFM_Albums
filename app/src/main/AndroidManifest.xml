@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Splash">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:windowSoftInputMode="adjustPan"
             android:exported="true">
             <intent-filter>

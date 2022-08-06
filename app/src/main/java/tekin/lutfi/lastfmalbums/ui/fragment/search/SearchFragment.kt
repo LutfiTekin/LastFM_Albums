@@ -1,4 +1,4 @@
-package tekin.lutfi.lastfmalbums.ui.search
+package tekin.lutfi.lastfmalbums.ui.fragment.search
 
 import android.os.Bundle
 import android.util.Log

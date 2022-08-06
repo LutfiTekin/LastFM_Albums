@@ -7,18 +7,18 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="tekin.lutfi.lastfmalbums.ui.home.HomeFragment"
+        android:name="tekin.lutfi.lastfmalbums.ui.fragment.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="tekin.lutfi.lastfmalbums.ui.search.SearchFragment"
+        android:name="tekin.lutfi.lastfmalbums.ui.fragment.search.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/topAlbumsFragment"
-        android:name="tekin.lutfi.lastfmalbums.TopAlbumsFragment"
+        android:name="tekin.lutfi.lastfmalbums.ui.fragment.top_album.TopAlbumsFragment"
         android:label="top_albums_fragment"
         tools:layout="@layout/top_albums_fragment" />
 

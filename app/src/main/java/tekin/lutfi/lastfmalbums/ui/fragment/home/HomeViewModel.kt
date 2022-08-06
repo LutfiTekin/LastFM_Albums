@@ -1,4 +1,4 @@
-package tekin.lutfi.lastfmalbums.ui.home
+package tekin.lutfi.lastfmalbums.ui.fragment.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
