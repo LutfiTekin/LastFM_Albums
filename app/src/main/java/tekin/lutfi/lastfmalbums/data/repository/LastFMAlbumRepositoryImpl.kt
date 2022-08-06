@@ -12,9 +12,8 @@ class LastFMAlbumRepositoryImpl @Inject constructor(private val api: LastFMApi):
     override suspend fun searchAlbums(query: String): AlbumSearchResultDTO =
         api.searchAlbums(query)
 
-    override suspend fun searchArtists(query: String): ArtistSearchResultsDTO {
-        TODO("Not yet implemented")
-    }
+    override suspend fun searchArtists(query: String): ArtistSearchResultsDTO =
+        api.searchArtists(query)
 
     override suspend fun getTopAlbums(artist: String): TopAlbumsDTO =
         api.getTopAlbums(artist)
