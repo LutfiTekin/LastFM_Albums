@@ -86,6 +86,10 @@ dependencies {
     // To use Kotlin annotation processing tool (kapt)
     kapt "androidx.room:room-compiler:$roomVersion"
 
+    /**
+     * Image loading/caching
+     */
+    implementation "io.coil-kt:coil:1.2.0"
 
     /**
      * Paging
