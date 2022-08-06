@@ -21,20 +21,19 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesLastFMApi(retrofit: Retrofit): LastFMApi {
-        return retrofit.create(LastFMApi::class.java)
-    }
+    fun providesLastFMApi(retrofit: Retrofit): LastFMApi = retrofit.create(LastFMApi::class.java)
 
     @Singleton
     @Provides
-    fun provideAlbumDB(@ApplicationContext context: Context): AlbumDB{
-        return Room.databaseBuilder(context, AlbumDB::class.java, Constants.ALBUM_TABLE).build()
-    }
+    fun provideAlbumDB(@ApplicationContext context: Context): AlbumDB =
+        Room.databaseBuilder(context, AlbumDB::class.java, Constants.ALBUM_TABLE).build()
 
     @Singleton
     @Provides
-    fun provideAlbumDao(db: AlbumDB): AlbumDao{
-        return db.getAlbumDao()
-    }
+    fun provideAlbumDao(db: AlbumDB): AlbumDao = db.getAlbumDao()
+
+    @Singleton
+    @Provides
+    fun providesMoshi(): Moshi = Moshi.Builder().build()
 
 }

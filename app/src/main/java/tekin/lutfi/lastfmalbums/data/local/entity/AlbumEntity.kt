@@ -19,25 +19,11 @@ data class AlbumEntity(
     val tracks: List<Track>
 ){
 
-    class Converter{
 
-        private val moshi = Moshi.Builder().build()
-
-        @TypeConverter
-        fun fromStringToList(string: String): List<Track>?{
-            val type = Types.newParameterizedType(List::class.java, Track::class.java)
-            return moshi.adapter<List<Track>>(type).fromJson(string)
-        }
-
-        @TypeConverter
-        fun fromListToString(list: List<Track>): String{
-            val type = Types.newParameterizedType(List::class.java, Track::class.java)
-            return moshi.adapter<List<Track>>(type).toJson(list)
-        }
-
-    }
 
 }
+
+
 
 
 val AlbumEntity.album: Album
