@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/drawable/ic_baseline_queue_music_24.xml" value="0.238" />
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2585" />
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2585" />
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/layout/activity_main.xml" value="0.35989583333333336" />
@@ -10,6 +11,7 @@
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/layout/fragment_dashboard.xml" value="0.35989583333333336" />
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/layout/fragment_home.xml" value="0.35989583333333336" />
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/layout/fragment_search.xml" value="0.35989583333333336" />
+        <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/layout/list_item_artist.xml" value="0.35989583333333336" />
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/menu/bottom_nav_menu.xml" value="0.35989583333333336" />
       </map>
     </option>

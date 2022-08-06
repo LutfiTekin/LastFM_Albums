@@ -13,14 +13,12 @@ class TopAlbumUseCase @Inject constructor(private val repository: LastFMAlbumRep
 
     operator fun invoke(artist: String): Flow<Resource<List<TopAlbum>>> = flow{
         try {
-            emit(Resource.Loading())
+            emit(Resource.Loading)
             val data = repository.getTopAlbums(artist).topAlbums?.albums?.map { it.topAlbum }
                 ?: throw Exception()
             emit(Resource.Success(data))
-        }catch (e: HttpException){
-            emit(Resource.Error(e.localizedMessage ?: "An error occurred"))
         }catch (e: Exception){
-            emit(Resource.Error("An error occurred"))
+            emit(Resource.Error(e))
         }
     }
 

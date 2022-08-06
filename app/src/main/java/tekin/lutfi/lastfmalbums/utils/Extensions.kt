@@ -5,6 +5,8 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.ktx.remoteConfig
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flow
 
 val Context.isInternetAvailable: Boolean
     get() {
@@ -21,3 +23,11 @@ val Context.isInternetAvailable: Boolean
             else -> false
         }
     }
+
+suspend inline fun<T: Any> sendRequest(crossinline request: suspend () -> T) = flow {
+    emit(Resource.Loading)
+    val result = request()
+    emit(Resource.Success(result))
+}.catch { e ->
+    emit(Resource.Error(e))
+}
