@@ -1,4 +1,4 @@
-package tekin.lutfi.lastfmalbums.domain.respository
+package tekin.lutfi.lastfmalbums.domain.repository
 
 import tekin.lutfi.lastfmalbums.data.remote.dto.album.AlbumResults
 import tekin.lutfi.lastfmalbums.data.remote.dto.artist.ArtistSearchResults

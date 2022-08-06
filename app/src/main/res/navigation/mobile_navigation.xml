@@ -18,8 +18,8 @@
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/topAlbumsFragment"
-        android:name="tekin.lutfi.lastfmalbums.ui.fragment.top_album.TopAlbumsFragment"
+        android:name="tekin.lutfi.lastfmalbums.ui.fragment.album_detail.AlbumDetailFragment"
         android:label="top_albums_fragment"
-        tools:layout="@layout/top_albums_fragment" />
+        tools:layout="@layout/album_detail_fragment" />
 
 </navigation>

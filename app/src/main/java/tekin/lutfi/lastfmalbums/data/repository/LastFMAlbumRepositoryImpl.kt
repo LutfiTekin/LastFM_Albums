@@ -4,7 +4,7 @@ import tekin.lutfi.lastfmalbums.data.remote.LastFMApi
 import tekin.lutfi.lastfmalbums.data.remote.dto.album.AlbumResults
 import tekin.lutfi.lastfmalbums.data.remote.dto.artist.ArtistSearchResults
 import tekin.lutfi.lastfmalbums.data.remote.dto.top_album.TopAlbumResults
-import tekin.lutfi.lastfmalbums.domain.respository.LastFMAlbumRepository
+import tekin.lutfi.lastfmalbums.domain.repository.LastFMAlbumRepository
 import javax.inject.Inject
 
 class LastFMAlbumRepositoryImpl @Inject constructor(private val api: LastFMApi): LastFMAlbumRepository {

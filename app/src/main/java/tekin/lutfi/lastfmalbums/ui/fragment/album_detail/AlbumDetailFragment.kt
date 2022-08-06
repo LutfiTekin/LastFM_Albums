@@ -1,4 +1,4 @@
-package tekin.lutfi.lastfmalbums.ui.fragment.top_album
+package tekin.lutfi.lastfmalbums.ui.fragment.album_detail
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import tekin.lutfi.lastfmalbums.R
 
-class TopAlbumsFragment : Fragment() {
+class AlbumDetailFragment : Fragment() {
 
     companion object {
-        fun newInstance() = TopAlbumsFragment()
+        fun newInstance() = AlbumDetailFragment()
     }
 
     private lateinit var viewModel: TopAlbumsViewModel
@@ -20,7 +20,7 @@ class TopAlbumsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.top_albums_fragment, container, false)
+        return inflater.inflate(R.layout.album_detail_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

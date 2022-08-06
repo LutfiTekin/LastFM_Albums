@@ -4,10 +4,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import retrofit2.Retrofit
 import tekin.lutfi.lastfmalbums.data.remote.LastFMApi
 import tekin.lutfi.lastfmalbums.data.repository.LastFMAlbumRepositoryImpl
-import tekin.lutfi.lastfmalbums.domain.respository.LastFMAlbumRepository
+import tekin.lutfi.lastfmalbums.domain.repository.LastFMAlbumRepository
 import javax.inject.Singleton
 
 @Module

@@ -5,8 +5,6 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.remoteconfig.ktx.remoteConfig
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 

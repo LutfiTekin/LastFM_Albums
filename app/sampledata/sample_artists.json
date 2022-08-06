@@ -1,13 +1,67 @@
 {
-  "data" :[
-    {"name": "Billy Joel", "listenerCount":"Listeners: 56465456", "album": "The Nylon Curtain"},
-    {"name": "Image Dragons", "listenerCount":"Listeners: 3164648", "album": "Evolve"},
-    {"name": "Sting","listenerCount":"Listeners: 20065656", "album": "Brand New Day"},
-    {"name": "Alice Marton","listenerCount":"Listeners: 656998", "album": "No Roots"},
-    {"name": "KALEO","listenerCount":"Listeners: 546846865", "album": "A/B"},
-    {"name": "The Clash","listenerCount":"Listeners: 658996454", "album": "Combat Rock"},
-    {"name": "Sido","listenerCount":"Listeners: 6698555587", "album": "VI"},
-    {"name": "AC/DC","listenerCount":"Listeners: 16169898965", "album": "Highway to Hell"},
-    {"name": "Barış Manço","listenerCount":"Listeners: 800255568", "album": "Müsaadenizle Çocuklar"}
+  "data": [
+    {
+      "name": "Billy Joel",
+      "listenerCount": "Listeners: 56465456",
+      "album": "The Nylon Curtain",
+      "song": "Pressure",
+      "duration": "4:40"
+    },
+    {
+      "name": "Image Dragons",
+      "listenerCount": "Listeners: 3164648",
+      "album": "Evolve",
+      "song": "Believer",
+      "duration": "3:24"
+    },
+    {
+      "name": "Sting",
+      "listenerCount": "Listeners: 20065656",
+      "album": "Brand New Day",
+      "song": "Desert Rose",
+      "duration": "4:45"
+    },
+    {
+      "name": "Alice Marton",
+      "listenerCount": "Listeners: 656998",
+      "album": "No Roots",
+      "song": "No Roots",
+      "duration": "3:57"
+    },
+    {
+      "name": "KALEO",
+      "listenerCount": "Listeners: 546846865",
+      "album": "A/B",
+      "song": "Way down We Go",
+      "duration": "3:33"
+    },
+    {
+      "name": "The Clash",
+      "listenerCount": "Listeners: 658996454",
+      "album": "Combat Rock",
+      "song": "Should I Stay or Should I Go",
+      "duration": "3:08"
+    },
+    {
+      "name": "Sido",
+      "listenerCount": "Listeners: 6698555587",
+      "album": "VI",
+      "song": "Astronaut",
+      "duration": "3:58"
+    },
+    {
+      "name": "AC/DC",
+      "listenerCount": "Listeners: 16169898965",
+      "album": "Highway to Hell",
+      "song": "Highway to Hell",
+      "duration": "3:28"
+    },
+    {
+      "name": "Barış Manço",
+      "listenerCount": "Listeners: 800255568",
+      "album": "Müsaadenizle Çocuklar",
+      "song": "Benden Öte Benden Ziyade",
+      "duration": "5:13"
+    }
   ]
 }
