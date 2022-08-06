@@ -7,5 +7,5 @@ data class Album(
     val artist: String?,
     val image: String?,
     val name: String?,
-    val tracks: List<Track>
+    val tracks: List<Track> = emptyList()
 ): Serializable

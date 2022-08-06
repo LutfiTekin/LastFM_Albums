@@ -53,18 +53,21 @@ class AlbumDetailFragment : Fragment() {
     }
 
     private fun initObservers() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED){
-                albumDetailViewModel.albumInfoState.collect{ state ->
-                    binding.progressBar.isVisible = state.isLoading
-                    if (state.error.isNullOrBlank()) {
-                        tracksAdapter.submitList(state.data?.tracks)
-                    } else {
-                        //TODO show error
+        if (args.album.tracks.isEmpty()) {
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED){
+                    albumDetailViewModel.albumInfoState.collect{ state ->
+                        binding.progressBar.isVisible = state.isLoading
+                        if (state.error.isNullOrBlank()) {
+                            tracksAdapter.submitList(state.data?.tracks)
+                        } else {
+                            //TODO show error
+                        }
                     }
                 }
             }
-        }
+        }else tracksAdapter.submitList(args.album.tracks)
+
     }
 
     private fun loadTracks() {
