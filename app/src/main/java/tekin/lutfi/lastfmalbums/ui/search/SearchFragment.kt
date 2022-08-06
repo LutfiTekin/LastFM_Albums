@@ -5,6 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -13,9 +16,13 @@ import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import tekin.lutfi.lastfmalbums.databinding.FragmentSearchBinding
+import tekin.lutfi.lastfmalbums.domain.model.Artist
+import tekin.lutfi.lastfmalbums.ui.adapter.ArtistAdapter
+import tekin.lutfi.lastfmalbums.ui.adapter.ArtistSelectionListener
+import tekin.lutfi.lastfmalbums.utils.hideKeyboard
 
 @AndroidEntryPoint
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment(), ArtistSelectionListener {
 
     //region Viewbinding Setup
     private var _binding: FragmentSearchBinding? = null
@@ -32,6 +39,10 @@ class SearchFragment : Fragment() {
 
     private val searchViewModel: SearchViewModel by viewModels()
 
+    private val artistAdapter: ArtistAdapter by lazy {
+        ArtistAdapter(this)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,17 +58,11 @@ class SearchFragment : Fragment() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
                 searchViewModel.searchState.collect { state ->
-                    if (state.isLoading) {
-                        //show loading
-                        Log.d("UISTATE","is loading")
+                    binding.progressBar.isVisible = state.isLoading
+                    if (state.error.isNullOrBlank()) {
+                        artistAdapter.submitList(state.list)
                     }else {
-                        if (state.error.isNullOrBlank()) {
-                            //show error
-                            Log.d("UISTATE", state.list.toString())
-                        }else {
-                            //Loading list
-                            Log.d("UISTATE", state.error.orEmpty())
-                        }
+                        //TODO show error
                     }
                 }
             }
@@ -65,11 +70,26 @@ class SearchFragment : Fragment() {
     }
 
     private fun FragmentSearchBinding.setupUI(){
+
         searchButton.setOnClickListener {
             val query = searchInput.text.toString()
             searchViewModel.runSearch(query)
-            Log.d("UISTATE","Query: $query")
+            searchInput.hideKeyboard()
         }
+        searchInput.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                searchButton.performClick()
+                return@setOnEditorActionListener true
+            }
+            false
+        }
+        artistList.adapter = artistAdapter
+        artistList.setHasFixedSize(true)
+    }
+
+    override fun onArtistSelected(artist: Artist) {
+        //TODO go to top albums page
+        Toast.makeText(context, "${artist.name} selected",Toast.LENGTH_SHORT).show()
     }
 
 }
