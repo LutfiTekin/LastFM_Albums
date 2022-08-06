@@ -25,7 +25,7 @@ class AlbumDetailViewModel @Inject constructor(private val topAlbumsUseCase: Top
                 when (resource) {
                     is Resource.Success -> _albumInfoState.value = UIState(data = resource.data)
                     is Resource.Loading -> _albumInfoState.value = UIState(true)
-                    is Resource.Error -> _albumInfoState.value = UIState(error = resource.e.message)
+                    is Resource.Error -> _albumInfoState.value = UIState(error = resource.e.localizedMessage)
                 }
             }
         }

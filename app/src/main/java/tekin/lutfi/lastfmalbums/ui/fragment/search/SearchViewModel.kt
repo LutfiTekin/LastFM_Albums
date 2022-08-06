@@ -24,7 +24,7 @@ class SearchViewModel @Inject constructor(private val searchUseCase: SearchUseCa
                 when (resource) {
                     is Resource.Success -> _searchState.value = UIState(data = resource.data)
                     is Resource.Loading -> _searchState.value = UIState(true)
-                    is Resource.Error -> _searchState.value = UIState(error = resource.e.message)
+                    is Resource.Error -> _searchState.value = UIState(error = resource.e.localizedMessage)
                 }
             }
         }

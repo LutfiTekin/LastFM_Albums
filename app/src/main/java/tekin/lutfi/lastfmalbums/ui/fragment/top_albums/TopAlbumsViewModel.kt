@@ -28,7 +28,7 @@ class TopAlbumsViewModel @Inject constructor(private val topAlbumsUseCase: TopAl
                 when (resource) {
                     is Resource.Success -> _topAlbumState.value = UIState(data = resource.data)
                     is Resource.Loading -> _topAlbumState.value = UIState(true)
-                    is Resource.Error -> _topAlbumState.value = UIState(error = resource.e.message)
+                    is Resource.Error -> _topAlbumState.value = UIState(error = resource.e.localizedMessage)
                 }
             }
         }

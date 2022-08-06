@@ -64,7 +64,7 @@ class SearchFragment : Fragment(), ArtistSelectionListener {
                     if (state.error.isNullOrBlank()) {
                         artistAdapter.submitList(state.data)
                     }else {
-                        //TODO show error
+                        Toast.makeText(context, state.error, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
