@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -15,7 +18,9 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import coil.load
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import tekin.lutfi.lastfmalbums.R
 import tekin.lutfi.lastfmalbums.databinding.AlbumDetailFragmentBinding
 import tekin.lutfi.lastfmalbums.ui.adapter.TracksAdapter
 
@@ -48,42 +53,72 @@ class AlbumDetailFragment : Fragment() {
     ): View {
         _binding = AlbumDetailFragmentBinding.inflate(inflater, container, false)
         binding.setupUI()
-        loadTracks()
+        albumDetailViewModel.loadAlbumTracks(args.album)
         initObservers()
         return binding.root
     }
 
     private fun initObservers() {
-        if (args.album.tracks.isEmpty()) {
-            lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED){
-                    albumDetailViewModel.albumInfoState.collect{ state ->
-                        binding.progressBar.isVisible = state.isLoading
-                        if (state.error.isNullOrBlank()) {
-                            tracksAdapter.submitList(state.data?.tracks)
-                        } else {
-                            Toast.makeText(context, state.error, Toast.LENGTH_SHORT).show()
-                        }
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                albumDetailViewModel.albumInfoState.collect { state ->
+                    binding.progressBar.isVisible = state.isLoading
+                    if (state.error.isNullOrBlank()) {
+                        tracksAdapter.submitList(state.data?.tracks)
+                        binding.albumItem.favoriteButton.isVisible = true
+                    } else {
+                        Toast.makeText(context, state.error, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
-        }else tracksAdapter.submitList(args.album.tracks)
+        }
 
-    }
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                albumDetailViewModel.favoriteButtonState.collectLatest { state ->
+                    if (state.data != null) {
+                        binding.albumItem.favoriteButton.setFavorite(state.data)
+                    }
+                }
+            }
+        }
 
-    private fun loadTracks() {
-        albumDetailViewModel.loadAlbumTracks(args.album.artist.orEmpty(), args.album.name.orEmpty())
     }
 
 
     private fun AlbumDetailFragmentBinding.setupUI() {
-        albumItem.albumName.text = args.album.name
-        albumItem.artistName.text = args.album.artist
-        albumItem.albumImage.load(args.album.image)
+        albumDetailViewModel.isAlbumFavorited(args.album.name)
+
+        albumItem.apply {
+            albumName.text = args.album.name
+            artistName.text = args.album.artist
+            albumImage.load(args.album.image)
+            favoriteButton.setOnClickListener {
+                val isFavorite = albumDetailViewModel.favoriteButtonState.value.data ?: false
+                val album = albumDetailViewModel.albumInfoState.value.data ?: return@setOnClickListener
+                if (isFavorite)
+                    albumDetailViewModel.removeAlbumFromFavorites(album)
+                else albumDetailViewModel.addAlbumToFavorites(album)
+            }
+        }
+
         trackList.apply {
             setHasFixedSize(true)
             adapter = tracksAdapter
-            addItemDecoration(DividerItemDecoration(trackList.context, DividerItemDecoration.VERTICAL ))
+            addItemDecoration(
+                DividerItemDecoration(
+                    trackList.context,
+                    DividerItemDecoration.VERTICAL
+                )
+            )
         }
+    }
+
+    private fun AppCompatImageView.setFavorite(state: Boolean) {
+        val drawable = ContextCompat.getDrawable(
+            context,
+            if (state) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
+        )
+        setImageDrawable(drawable)
     }
 }

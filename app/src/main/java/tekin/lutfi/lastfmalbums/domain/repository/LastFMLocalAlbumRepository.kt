@@ -9,7 +9,7 @@ interface LastFMLocalAlbumRepository {
 
     suspend fun addAlbum(album: AlbumEntity)
 
-    suspend fun deleteAlbum(album: AlbumEntity)
+    suspend fun deleteAlbum(albumName: String)
 
     fun isFavorited(albumName: String): Flow<Int>
 

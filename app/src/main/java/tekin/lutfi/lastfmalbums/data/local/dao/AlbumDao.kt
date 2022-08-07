@@ -14,8 +14,8 @@ interface AlbumDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addAlbum(album: AlbumEntity)
 
-    @Delete
-    suspend fun deleteAlbum(album: AlbumEntity)
+    @Query("DELETE FROM ${Constants.ALBUM_TABLE} WHERE name = :albumName")
+    suspend fun deleteAlbum(albumName: String)
 
     @Query("SELECT COUNT() FROM ${Constants.ALBUM_TABLE} WHERE name = :albumName")
     fun isFavorited(albumName: String): Flow<Int>

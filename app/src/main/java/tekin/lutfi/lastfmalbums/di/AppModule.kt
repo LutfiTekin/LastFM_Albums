@@ -11,6 +11,7 @@ import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import tekin.lutfi.lastfmalbums.data.local.AlbumDB
 import tekin.lutfi.lastfmalbums.data.local.dao.AlbumDao
+import tekin.lutfi.lastfmalbums.data.local.type_converter.TrackListTypeConverter
 import tekin.lutfi.lastfmalbums.data.remote.LastFMApi
 import tekin.lutfi.lastfmalbums.utils.Constants
 import javax.inject.Singleton
@@ -25,8 +26,12 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideAlbumDB(@ApplicationContext context: Context): AlbumDB =
-        Room.databaseBuilder(context, AlbumDB::class.java, Constants.ALBUM_TABLE).build()
+    fun provideAlbumDB(
+        @ApplicationContext context: Context,
+        trackListTypeConverter: TrackListTypeConverter
+    ): AlbumDB =
+        Room.databaseBuilder(context, AlbumDB::class.java, Constants.ALBUM_TABLE)
+            .addTypeConverter(trackListTypeConverter).build()
 
     @Singleton
     @Provides

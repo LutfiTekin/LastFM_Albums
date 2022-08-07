@@ -1,6 +1,7 @@
 package tekin.lutfi.lastfmalbums.data.local.entity
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
 import com.squareup.moshi.Moshi
@@ -9,7 +10,7 @@ import tekin.lutfi.lastfmalbums.domain.model.Album
 import tekin.lutfi.lastfmalbums.domain.model.Track
 import tekin.lutfi.lastfmalbums.utils.Constants
 
-@Entity(tableName = Constants.ALBUM_TABLE)
+@Entity(tableName = Constants.ALBUM_TABLE, indices = [Index(value = ["name"], unique = true)])
 data class AlbumEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,

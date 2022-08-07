@@ -15,9 +15,9 @@ class LocalAlbumsUseCase @Inject constructor(private val localAlbumRepository: L
 
     suspend fun addAlbum(album: Album) = localAlbumRepository.addAlbum(album.albumEntity)
 
-    suspend fun removeAlbum(album: Album) = localAlbumRepository.deleteAlbum(album.albumEntity)
+    suspend fun removeAlbum(album: Album) = localAlbumRepository.deleteAlbum(album.name.orEmpty())
 
-    suspend fun isFavorited(albumName: String): Flow<Boolean> =
+    fun isFavorited(albumName: String): Flow<Boolean> =
         localAlbumRepository.isFavorited(albumName).map {
             it == 1
         }
