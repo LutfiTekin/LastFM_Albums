@@ -76,10 +76,5 @@ object NetworkConfigurationModule {
         @Named(CACHE_SIZE) cacheSize: Long
     ) = Cache(File(context.cacheDir, cacheDir), cacheSize)
 
-    @Singleton
-    @Provides
-    @Named(API_KEY)
-    fun providesApiKey() = Firebase.remoteConfig.getString(API_KEY)
-
 
 }

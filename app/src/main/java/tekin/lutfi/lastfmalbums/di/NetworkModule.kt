@@ -1,6 +1,8 @@
 package tekin.lutfi.lastfmalbums.di
 
 import android.content.Context
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.ktx.remoteConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -66,11 +68,11 @@ object NetworkModule {
     @Singleton
     @Named(API_KEY_INTERCEPTOR)
     fun providesApiKeyInterceptor(
-        @Named(API_KEY) key: String,
         @Named(FORMAT) format: String,
         @Named(PAGE_LIMIT) limit: String
     ) = Interceptor { chain ->
         var request: Request = chain.request()
+        val key = Firebase.remoteConfig.getString(API_KEY)
         val url: HttpUrl = request.url.newBuilder()
             .addQueryParameter(API_KEY, key)
             .addQueryParameter(FORMAT, format)
