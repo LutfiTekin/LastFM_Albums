@@ -1,6 +1,7 @@
 package tekin.lutfi.lastfmalbums.data.local.dao
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 import tekin.lutfi.lastfmalbums.data.local.entity.AlbumEntity
 import tekin.lutfi.lastfmalbums.utils.Constants
 
@@ -8,12 +9,15 @@ import tekin.lutfi.lastfmalbums.utils.Constants
 interface AlbumDao {
 
     @Query("SELECT * FROM ${Constants.ALBUM_TABLE}")
-    suspend fun getAlbums(): List<AlbumEntity>
+    fun getAlbums(): Flow<List<AlbumEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addAlbum(album: AlbumEntity)
 
     @Delete
     suspend fun deleteAlbum(album: AlbumEntity)
+
+    @Query("SELECT COUNT() FROM ${Constants.ALBUM_TABLE} WHERE name = :albumName")
+    fun isFavorited(albumName: String): Flow<Int>
 
 }

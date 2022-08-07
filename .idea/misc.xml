@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.2705" />
+        <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.2705" />
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/drawable/ic_baseline_music_note_24.xml" value="0.2705" />
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.2705" />
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/drawable/ic_baseline_queue_music_24.xml" value="0.238" />
@@ -14,7 +16,7 @@
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/layout/fragment_dashboard.xml" value="0.35989583333333336" />
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/layout/fragment_home.xml" value="0.35989583333333336" />
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/layout/fragment_search.xml" value="0.5373250388802489" />
-        <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/layout/list_item_album.xml" value="0.35989583333333336" />
+        <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/layout/list_item_album.xml" value="0.75" />
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/layout/list_item_artist.xml" value="0.35989583333333336" />
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/layout/list_item_top_album.xml" value="0.6329923273657289" />
         <entry key="..\:/Users/lutfi/AndroidStudioProjects/LastFMAlbums/app/src/main/res/layout/list_item_track.xml" value="0.48019457956914524" />
