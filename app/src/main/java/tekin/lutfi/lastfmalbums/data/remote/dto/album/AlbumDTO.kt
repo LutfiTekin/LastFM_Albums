@@ -30,6 +30,6 @@ data class AlbumDTO(
 val AlbumDTO.album: Album
     get() {
         val largeImage = images?.find { it.size == Constants.IMAGE_SIZE_LARGE }?.text
-        val tracks = tracks?.list?.map { Track(it.name, it.duration) } ?: emptyList()
+        val tracks = tracks?.getTrackList() ?: emptyList()
         return Album(artist = artist, name = name, image = largeImage, tracks = tracks)
     }
