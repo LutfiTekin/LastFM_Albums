@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
 import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -79,8 +80,11 @@ class TopAlbumsFragment : Fragment(), TopAlbumSelectionListener {
         artistItem.listenerCount.text =
             String.format(root.context.getString(R.string.listener_count), args.artist.listeners)
         artistItem.artistImage.load(args.artist.image)
-        topAlbumList.setHasFixedSize(true)
-        topAlbumList.adapter = topAlbumsAdapter
+        topAlbumList.apply {
+            setHasFixedSize(true)
+            adapter = topAlbumsAdapter
+            addItemDecoration(DividerItemDecoration(topAlbumList.context, DividerItemDecoration.VERTICAL ))
+        }
     }
 
     override fun onTopAlbumSelected(topAlbum: TopAlbum) {

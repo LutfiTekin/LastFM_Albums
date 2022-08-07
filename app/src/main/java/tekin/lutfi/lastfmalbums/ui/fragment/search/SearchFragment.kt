@@ -13,6 +13,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import tekin.lutfi.lastfmalbums.R
@@ -89,8 +91,11 @@ class SearchFragment : Fragment(), ArtistSelectionListener {
             }
             false
         }
-        artistList.adapter = artistAdapter
-        artistList.setHasFixedSize(true)
+        artistList.apply {
+            adapter = artistAdapter
+            setHasFixedSize(true)
+            addItemDecoration(DividerItemDecoration(artistList.context, DividerItemDecoration.VERTICAL ))
+        }
     }
 
     override fun onArtistSelected(artist: Artist) {

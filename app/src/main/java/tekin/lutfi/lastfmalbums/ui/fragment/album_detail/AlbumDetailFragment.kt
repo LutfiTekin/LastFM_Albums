@@ -12,9 +12,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
 import coil.load
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import tekin.lutfi.lastfmalbums.databinding.AlbumDetailFragmentBinding
 import tekin.lutfi.lastfmalbums.ui.adapter.TracksAdapter
@@ -80,6 +80,10 @@ class AlbumDetailFragment : Fragment() {
         albumItem.albumName.text = args.album.name
         albumItem.artistName.text = args.album.artist
         albumItem.albumImage.load(args.album.image)
-        trackList.adapter = tracksAdapter
+        trackList.apply {
+            setHasFixedSize(true)
+            adapter = tracksAdapter
+            addItemDecoration(DividerItemDecoration(trackList.context, DividerItemDecoration.VERTICAL ))
+        }
     }
 }
