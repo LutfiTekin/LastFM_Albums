@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.App.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">#E57373</item>
+        <item name="windowSplashScreenBackground">@color/background_color_main</item>
 
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_baseline_queue_music_24</item>
 
