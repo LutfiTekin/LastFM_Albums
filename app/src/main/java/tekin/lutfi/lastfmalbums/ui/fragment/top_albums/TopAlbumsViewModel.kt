@@ -43,17 +43,22 @@ class TopAlbumsViewModel @Inject constructor(
 
     private suspend fun applyFavorites(topAlbums: List<TopAlbum>) {
         topAlbums.forEach {
-            it.isFavorite = isFavorite(it)
+            val isFav = isFavorite(it)
+            it.isFavorite = isFav
         }
     }
 
-    suspend fun isFavorite(topAlbum: TopAlbum) = albumsUseCase.localAlbumExists(topAlbum.artist.orEmpty(), topAlbum.name.orEmpty())
+    suspend fun isFavorite(topAlbum: TopAlbum) =
+        albumsUseCase.localAlbumExists(
+            topAlbum.name.orEmpty(),
+            topAlbum.artist.orEmpty()
+        )
 
     fun setFavorite(topAlbum: TopAlbum, stateChanged: (Boolean) -> Unit) = viewModelScope.launch {
         if (topAlbum.isFavorite) {
             albumsUseCase.getAlbumInfo(topAlbum.artist.orEmpty(), topAlbum.name.orEmpty())
                 .collect { resource ->
-                    if (resource is Resource.Success){
+                    if (resource is Resource.Success) {
                         val album = resource.data ?: return@collect
                         albumsUseCase.addAlbum(album = album)
                         stateChanged(true)
