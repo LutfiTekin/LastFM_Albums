@@ -13,7 +13,7 @@ interface LastFMLocalAlbumRepository {
 
     suspend fun deleteAlbum(albumName: String, artist: String)
 
-    fun isFavorite(albumName: String, artist: String): Flow<Boolean>
+    fun isFavoriteState(albumName: String, artist: String): Flow<Boolean>
 
-
+    suspend fun isFavorite(albumName: String, artist: String): Boolean
 }

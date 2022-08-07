@@ -22,4 +22,6 @@ object Constants {
     const val ALBUM_TABLE = "album_table"
 
     const val IMAGE_SIZE_LARGE = "large"
+
+    const val PAYLOAD_FAVORITE_BUTTON = "p_fav_button"
 }

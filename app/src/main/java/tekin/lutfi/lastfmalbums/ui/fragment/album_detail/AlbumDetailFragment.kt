@@ -22,6 +22,7 @@ import kotlinx.coroutines.launch
 import tekin.lutfi.lastfmalbums.R
 import tekin.lutfi.lastfmalbums.databinding.AlbumDetailFragmentBinding
 import tekin.lutfi.lastfmalbums.ui.adapter.TracksAdapter
+import tekin.lutfi.lastfmalbums.utils.setFavorite
 
 @AndroidEntryPoint
 class AlbumDetailFragment : Fragment() {
@@ -115,13 +116,5 @@ class AlbumDetailFragment : Fragment() {
                 )
             )
         }
-    }
-
-    private fun AppCompatImageView.setFavorite(state: Boolean) {
-        val drawable = ContextCompat.getDrawable(
-            context,
-            if (state) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
-        )
-        setImageDrawable(drawable)
     }
 }

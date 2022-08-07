@@ -21,6 +21,9 @@ interface AlbumDao {
     suspend fun deleteAlbum(albumName: String, artist: String)
 
     @Query("SELECT EXISTS(SELECT name FROM ${Constants.ALBUM_TABLE} WHERE name = :albumName AND artist = :artist)")
-    fun isFavorite(albumName: String, artist: String): Flow<Boolean>
+    fun isFavoriteState(albumName: String, artist: String): Flow<Boolean>
+
+    @Query("SELECT EXISTS(SELECT name FROM ${Constants.ALBUM_TABLE} WHERE name = :albumName AND artist = :artist)")
+    suspend fun isFavorite(albumName: String, artist: String): Boolean
 
 }

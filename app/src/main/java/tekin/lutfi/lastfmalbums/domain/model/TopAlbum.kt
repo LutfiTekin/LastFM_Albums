@@ -6,7 +6,8 @@ data class TopAlbum(
     val image: String?,
     val name: String?,
     val playCount: Int?,
-    val url: String?
+    val url: String?,
+    var isFavorite: Boolean = false
 )
 
 val TopAlbum.album

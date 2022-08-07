@@ -17,6 +17,8 @@ class LastFMLocalAlbumRepositoryImpl @Inject constructor(private val dao: AlbumD
 
     override suspend fun deleteAlbum(albumName: String, artist: String) = dao.deleteAlbum(albumName, artist)
 
-    override fun isFavorite(albumName: String, artist: String): Flow<Boolean> = dao.isFavorite(albumName, artist)
+    override fun isFavoriteState(albumName: String, artist: String): Flow<Boolean> = dao.isFavoriteState(albumName, artist)
+
+    override suspend fun isFavorite(albumName: String, artist: String): Boolean = dao.isFavorite(albumName, artist)
 
 }

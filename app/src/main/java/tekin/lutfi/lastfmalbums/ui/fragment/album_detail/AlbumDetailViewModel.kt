@@ -29,7 +29,7 @@ class AlbumDetailViewModel @Inject constructor(
 
     fun loadAlbumTracks(album: Album) {
         viewModelScope.launch {
-            localAlbumsUseCase.isFavourite(album).collectLatest { isFavorite ->
+            localAlbumsUseCase.isFavouriteState(album).collectLatest { isFavorite ->
                 _favoriteButtonState.value = UIState(data = isFavorite)
                 if (isFavorite){
                     val storedAlbum = localAlbumsUseCase.getSingleAlbum(album.name.orEmpty(), album.artist.orEmpty())

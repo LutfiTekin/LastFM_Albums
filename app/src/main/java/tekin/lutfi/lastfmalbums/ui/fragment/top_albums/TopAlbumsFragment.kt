@@ -23,6 +23,7 @@ import tekin.lutfi.lastfmalbums.domain.model.TopAlbum
 import tekin.lutfi.lastfmalbums.domain.model.album
 import tekin.lutfi.lastfmalbums.ui.adapter.TopAlbumSelectionListener
 import tekin.lutfi.lastfmalbums.ui.adapter.TopAlbumsAdapter
+import tekin.lutfi.lastfmalbums.utils.Constants
 
 @AndroidEntryPoint
 class TopAlbumsFragment : Fragment(), TopAlbumSelectionListener {
@@ -74,7 +75,6 @@ class TopAlbumsFragment : Fragment(), TopAlbumSelectionListener {
         }
     }
 
-        //TODO add favorite buttons to items
     private fun TopAlbumsFragmentBinding.setupUI() {
         artistItem.artistName.text = args.artist.name
         artistItem.listenerCount.text =
@@ -83,12 +83,39 @@ class TopAlbumsFragment : Fragment(), TopAlbumSelectionListener {
         topAlbumList.apply {
             setHasFixedSize(true)
             adapter = topAlbumsAdapter
-            addItemDecoration(DividerItemDecoration(topAlbumList.context, DividerItemDecoration.VERTICAL ))
+            addItemDecoration(
+                DividerItemDecoration(
+                    topAlbumList.context,
+                    DividerItemDecoration.VERTICAL
+                )
+            )
         }
     }
 
     override fun onTopAlbumSelected(topAlbum: TopAlbum) {
         val action = TopAlbumsFragmentDirections.actionTopAlbumToDetail(topAlbum.album)
         findNavController().navigate(action)
+    }
+
+    override fun onTopAlbumAddedToFavorites(topAlbum: TopAlbum) {
+        val message =
+            if (topAlbum.isFavorite) getString(R.string.toast_add_album_list) else getString(
+                R.string.toast_remove_album_list)
+        val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
+        toast.show()
+        topAlbumsViewModel.setFavorite(topAlbum) {
+            val album = topAlbumsAdapter.currentList.firstOrNull {
+                it.name == topAlbum.name
+                        && it.artist == topAlbum.artist
+            }
+            val position = topAlbumsAdapter.currentList.indexOf(album)
+            album?.isFavorite = topAlbum.isFavorite
+            topAlbumsAdapter.notifyItemChanged(position, Constants.PAYLOAD_FAVORITE_BUTTON)
+            val resultMessage =
+                if (topAlbum.isFavorite) getString(R.string.toast_added_album_list) else getString(
+                    R.string.toast_removed_album_list)
+            toast.setText(resultMessage)
+            toast.show()
+        }
     }
 }

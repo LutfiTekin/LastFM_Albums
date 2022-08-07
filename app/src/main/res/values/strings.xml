@@ -10,4 +10,8 @@
     <string name="error_empty_search_query">Search query cannot be empty</string>
     <string name="toast_album_removed">Album, %s by %s, is removed from your favorites</string>
     <string name="toast_album_added">Album, %s by %s, is added to your favorites</string>
+    <string name="toast_add_album_list">Adding album to your list</string>
+    <string name="toast_remove_album_list">Removing album from your list</string>
+    <string name="toast_added_album_list">Added album to your list</string>
+    <string name="toast_removed_album_list">Removed album from your list</string>
 </resources>

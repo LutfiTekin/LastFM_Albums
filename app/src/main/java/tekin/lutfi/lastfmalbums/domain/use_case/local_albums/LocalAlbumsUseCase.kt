@@ -1,7 +1,6 @@
 package tekin.lutfi.lastfmalbums.domain.use_case.local_albums
 
 import kotlinx.coroutines.flow.*
-import tekin.lutfi.lastfmalbums.data.local.entity.AlbumEntity
 import tekin.lutfi.lastfmalbums.data.local.entity.album
 import tekin.lutfi.lastfmalbums.data.local.entity.albumEntity
 import tekin.lutfi.lastfmalbums.domain.model.Album
@@ -21,6 +20,8 @@ class LocalAlbumsUseCase @Inject constructor(private val localAlbumRepository: L
 
     suspend fun removeAlbum(album: Album) = localAlbumRepository.deleteAlbum(album.name.orEmpty(), album.artist.orEmpty())
 
-    fun isFavourite(album: Album): Flow<Boolean> = localAlbumRepository.isFavorite(album.name.orEmpty(), album.artist.orEmpty())
+    fun isFavouriteState(album: Album): Flow<Boolean> = localAlbumRepository.isFavoriteState(album.name.orEmpty(), album.artist.orEmpty())
+
+    suspend fun isFavourite(album: Album): Boolean = localAlbumRepository.isFavorite(album.name.orEmpty(), album.artist.orEmpty())
 
 }
