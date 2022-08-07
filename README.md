@@ -4,14 +4,14 @@
 
 ## Used third party libraries
 
-### Coil 1.0.0
+### Coil
 https://github.com/coil-kt/coil
 
-### Retrofit 2.9.0
+### Retrofit
 https://github.com/square/retrofit
 
-### OkHttp 4.9.3
+### OkHttp
 https://github.com/square/okhttp
 
-### Moshi 2.4.0
+### Moshi
 https://github.com/square/moshi
