@@ -16,4 +16,5 @@
     <string name="toast_removed_album_list">Removed album from your list</string>
     <string name="home_empty_state_title">Album list is currently empty</string>
     <string name="home_empty_state_subtext">You can add albums using the Search menu</string>
+    <string name="toast_album_has_tracks">No Tracks found on this album</string>
 </resources>

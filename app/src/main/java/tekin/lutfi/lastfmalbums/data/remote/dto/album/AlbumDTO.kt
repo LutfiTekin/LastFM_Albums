@@ -19,8 +19,6 @@ data class AlbumDTO(
     val name: String?,
     @field:Json(name = "playcount")
     val playCount: String?,
-    @field:Json(name = "tags")
-    val tags: Tags?,
     @field:Json(name = "tracks")
     val tracks: Tracks?,
     @field:Json(name = "url")
