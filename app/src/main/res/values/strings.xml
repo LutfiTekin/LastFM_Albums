@@ -14,4 +14,6 @@
     <string name="toast_remove_album_list">Removing album from your list</string>
     <string name="toast_added_album_list">Added album to your list</string>
     <string name="toast_removed_album_list">Removed album from your list</string>
+    <string name="home_empty_state_title">Album list is currently empty</string>
+    <string name="home_empty_state_subtext">You can add albums using the Search menu</string>
 </resources>
