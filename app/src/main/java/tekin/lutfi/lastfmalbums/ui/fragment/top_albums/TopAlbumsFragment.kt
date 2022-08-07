@@ -74,7 +74,7 @@ class TopAlbumsFragment : Fragment(), TopAlbumSelectionListener {
         }
     }
 
-
+        //TODO add favorite buttons to items
     private fun TopAlbumsFragmentBinding.setupUI() {
         artistItem.artistName.text = args.artist.name
         artistItem.listenerCount.text =

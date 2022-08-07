@@ -8,4 +8,6 @@
     <string name="title_top_albums">Top Albums</string>
     <string name="title_album_detail">Album Detail</string>
     <string name="error_empty_search_query">Search query cannot be empty</string>
+    <string name="toast_album_removed">Album, %s by %s, is removed from your favorites</string>
+    <string name="toast_album_added">Album, %s by %s, is added to your favorites</string>
 </resources>

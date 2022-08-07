@@ -11,13 +11,16 @@ interface AlbumDao {
     @Query("SELECT * FROM ${Constants.ALBUM_TABLE}")
     fun getAlbums(): Flow<List<AlbumEntity>>
 
+    @Query("SELECT * FROM ${Constants.ALBUM_TABLE} WHERE name = :albumName AND artist = :artist")
+    suspend fun getAlbum(albumName: String, artist: String): AlbumEntity
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addAlbum(album: AlbumEntity)
 
-    @Query("DELETE FROM ${Constants.ALBUM_TABLE} WHERE name = :albumName")
-    suspend fun deleteAlbum(albumName: String)
+    @Query("DELETE FROM ${Constants.ALBUM_TABLE} WHERE name = :albumName AND artist = :artist")
+    suspend fun deleteAlbum(albumName: String, artist: String)
 
-    @Query("SELECT COUNT() FROM ${Constants.ALBUM_TABLE} WHERE name = :albumName")
-    fun isFavorited(albumName: String): Flow<Int>
+    @Query("SELECT EXISTS(SELECT name FROM ${Constants.ALBUM_TABLE} WHERE name = :albumName AND artist = :artist)")
+    fun isFavorite(albumName: String, artist: String): Flow<Boolean>
 
 }

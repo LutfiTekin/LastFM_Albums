@@ -10,7 +10,7 @@ import tekin.lutfi.lastfmalbums.domain.model.Album
 import tekin.lutfi.lastfmalbums.domain.model.Track
 import tekin.lutfi.lastfmalbums.utils.Constants
 
-@Entity(tableName = Constants.ALBUM_TABLE, indices = [Index(value = ["name"], unique = true)])
+@Entity(tableName = Constants.ALBUM_TABLE, indices = [Index(value = ["name", "artist"], unique = true)])
 data class AlbumEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,

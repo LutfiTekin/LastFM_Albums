@@ -11,10 +11,12 @@ class LastFMLocalAlbumRepositoryImpl @Inject constructor(private val dao: AlbumD
 
     override fun getAlbums(): Flow<List<AlbumEntity>> = dao.getAlbums()
 
+    override suspend fun getAlbum(albumName: String, artist: String): AlbumEntity = dao.getAlbum(albumName, artist)
+
     override suspend fun addAlbum(album: AlbumEntity) = dao.addAlbum(album)
 
-    override suspend fun deleteAlbum(albumName: String) = dao.deleteAlbum(albumName)
+    override suspend fun deleteAlbum(albumName: String, artist: String) = dao.deleteAlbum(albumName, artist)
 
-    override fun isFavorited(albumName: String): Flow<Int> = dao.isFavorited(albumName)
+    override fun isFavorite(albumName: String, artist: String): Flow<Boolean> = dao.isFavorite(albumName, artist)
 
 }

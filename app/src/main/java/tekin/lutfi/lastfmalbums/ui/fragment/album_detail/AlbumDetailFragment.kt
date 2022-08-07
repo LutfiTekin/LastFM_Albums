@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
@@ -87,18 +86,22 @@ class AlbumDetailFragment : Fragment() {
 
 
     private fun AlbumDetailFragmentBinding.setupUI() {
-        albumDetailViewModel.isAlbumFavorited(args.album.name)
-
         albumItem.apply {
             albumName.text = args.album.name
             artistName.text = args.album.artist
             albumImage.load(args.album.image)
             favoriteButton.setOnClickListener {
                 val isFavorite = albumDetailViewModel.favoriteButtonState.value.data ?: false
-                val album = albumDetailViewModel.albumInfoState.value.data ?: return@setOnClickListener
-                if (isFavorite)
+                val album =
+                    albumDetailViewModel.albumInfoState.value.data ?: return@setOnClickListener
+                val message = if (isFavorite) {
                     albumDetailViewModel.removeAlbumFromFavorites(album)
-                else albumDetailViewModel.addAlbumToFavorites(album)
+                    String.format(getString(R.string.toast_album_removed), album.name, album.artist)
+                } else {
+                    albumDetailViewModel.addAlbumToFavorites(album)
+                    String.format(getString(R.string.toast_album_added), album.name, album.artist)
+                }
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
             }
         }
 
