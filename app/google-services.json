@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "107723925675",
+    "project_id": "lastfm-albums-a3c32",
+    "storage_bucket": "lastfm-albums-a3c32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107723925675:android:6e4bbbbadf8b535778afee",
+        "android_client_info": {
+          "package_name": "tekin.lutfi.lastfmalbums"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107723925675-75n5t26gmme1pti6utbg884b2e2ej2t1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAXaHJ7tGl-HanU09Lc4lctd8qyuU4nS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107723925675-75n5t26gmme1pti6utbg884b2e2ej2t1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
