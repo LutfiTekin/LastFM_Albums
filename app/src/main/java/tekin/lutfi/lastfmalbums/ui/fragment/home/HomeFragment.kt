@@ -14,6 +14,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import tekin.lutfi.lastfmalbums.databinding.FragmentHomeBinding
@@ -65,7 +66,7 @@ class HomeFragment : Fragment(), LocalAlbumSelectionListener {
     private fun loadFavoriteAlbums() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
-                homeViewModel.getAlbums().collectLatest { albumList ->
+                homeViewModel.getAlbums().collect { albumList ->
                     binding.emptyState.root.isVisible = albumList.isEmpty()
                     localAlbumsAdapter.submitList(albumList)
                 }

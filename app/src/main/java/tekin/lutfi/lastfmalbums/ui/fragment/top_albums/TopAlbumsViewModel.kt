@@ -5,14 +5,10 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import tekin.lutfi.lastfmalbums.data.local.entity.albumEntity
 import tekin.lutfi.lastfmalbums.domain.model.TopAlbum
 import tekin.lutfi.lastfmalbums.domain.model.album
-import tekin.lutfi.lastfmalbums.domain.use_case.local_albums.LocalAlbumsUseCase
-import tekin.lutfi.lastfmalbums.domain.use_case.top_albums.TopAlbumUseCase
+import tekin.lutfi.lastfmalbums.domain.use_case.albums.AlbumUseCase
 import tekin.lutfi.lastfmalbums.ui.UIState
 import tekin.lutfi.lastfmalbums.utils.Resource
 
@@ -20,8 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TopAlbumsViewModel @Inject constructor(
-    private val topAlbumsUseCase: TopAlbumUseCase,
-    private val localAlbumsUseCase: LocalAlbumsUseCase
+    private val albumsUseCase: AlbumUseCase
 ) :
     ViewModel() {
 
@@ -31,7 +26,7 @@ class TopAlbumsViewModel @Inject constructor(
 
     fun loadTopAlbums(artist: String) {
         viewModelScope.launch {
-            topAlbumsUseCase.getTopAlbums(artist).collect { resource ->
+            albumsUseCase.getTopAlbums(artist).collect { resource ->
                 when (resource) {
                     is Resource.Success -> {
                         val list = resource.data ?: emptyList()
@@ -52,20 +47,20 @@ class TopAlbumsViewModel @Inject constructor(
         }
     }
 
-    suspend fun isFavorite(topAlbum: TopAlbum) = localAlbumsUseCase.isFavourite(topAlbum.album)
+    suspend fun isFavorite(topAlbum: TopAlbum) = albumsUseCase.localAlbumExists(topAlbum.artist.orEmpty(), topAlbum.name.orEmpty())
 
     fun setFavorite(topAlbum: TopAlbum, stateChanged: (Boolean) -> Unit) = viewModelScope.launch {
         if (topAlbum.isFavorite) {
-            topAlbumsUseCase.getAlbumInfo(topAlbum.artist.orEmpty(), topAlbum.name.orEmpty())
+            albumsUseCase.getAlbumInfo(topAlbum.artist.orEmpty(), topAlbum.name.orEmpty())
                 .collect { resource ->
                     if (resource is Resource.Success){
                         val album = resource.data ?: return@collect
-                        localAlbumsUseCase.addAlbum(album = album)
+                        albumsUseCase.addAlbum(album = album)
                         stateChanged(true)
                     }
                 }
         } else {
-            localAlbumsUseCase.removeAlbum(topAlbum.album)
+            albumsUseCase.removeAlbum(topAlbum.album)
             stateChanged(false)
         }
     }

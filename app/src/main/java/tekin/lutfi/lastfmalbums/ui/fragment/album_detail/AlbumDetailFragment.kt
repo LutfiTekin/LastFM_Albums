@@ -71,8 +71,6 @@ class AlbumDetailFragment : Fragment() {
                         val tracks = state.data?.tracks
                         tracksAdapter.submitList(tracks)
                         binding.albumItem.favoriteButton.isVisible = true
-                        if (tracks.isNullOrEmpty())
-                            Toast.makeText(context,getString(R.string.toast_album_has_tracks), Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(context, state.error, Toast.LENGTH_SHORT).show()
                     }
