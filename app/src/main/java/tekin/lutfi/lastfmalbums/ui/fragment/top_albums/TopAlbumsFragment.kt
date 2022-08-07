@@ -41,6 +41,7 @@ class TopAlbumsFragment : Fragment(), TopAlbumSelectionListener {
     }
     //endregion
 
+    //region Variables
     private val topAlbumsViewModel: TopAlbumsViewModel by viewModels()
 
     private val args: TopAlbumsFragmentArgs by navArgs()
@@ -48,7 +49,9 @@ class TopAlbumsFragment : Fragment(), TopAlbumSelectionListener {
     private val topAlbumsAdapter: TopAlbumsAdapter by lazy {
         TopAlbumsAdapter(this)
     }
+    //endregion
 
+    //region LifeCycle methods
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,7 +62,9 @@ class TopAlbumsFragment : Fragment(), TopAlbumSelectionListener {
         initObservers()
         return binding.root
     }
+    //endregion
 
+    //region Observers
     private fun initObservers() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -74,7 +79,9 @@ class TopAlbumsFragment : Fragment(), TopAlbumSelectionListener {
             }
         }
     }
+    //endregion
 
+    //region UI Setup
     private fun TopAlbumsFragmentBinding.setupUI() {
         artistItem.artistName.text = args.artist.name
         artistItem.listenerCount.text =
@@ -91,7 +98,9 @@ class TopAlbumsFragment : Fragment(), TopAlbumSelectionListener {
             )
         }
     }
+    //endregion
 
+    //region Listeners
     override fun onTopAlbumSelected(topAlbum: TopAlbum) {
         val action = TopAlbumsFragmentDirections.actionTopAlbumToDetail(topAlbum.album)
         findNavController().navigate(action)
@@ -118,4 +127,5 @@ class TopAlbumsFragment : Fragment(), TopAlbumSelectionListener {
             toast.show()
         }
     }
+    //endregion
 }

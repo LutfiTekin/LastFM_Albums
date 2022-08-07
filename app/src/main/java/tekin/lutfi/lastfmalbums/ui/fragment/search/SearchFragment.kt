@@ -41,12 +41,15 @@ class SearchFragment : Fragment(), ArtistSelectionListener {
     }
     //endregion
 
+    //region Variables
     private val searchViewModel: SearchViewModel by viewModels()
 
     private val artistAdapter: ArtistAdapter by lazy {
         ArtistAdapter(this)
     }
+    //endregion
 
+    //region LifeCycle methods
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -57,7 +60,9 @@ class SearchFragment : Fragment(), ArtistSelectionListener {
         initObservers()
         return binding.root
     }
+    //endregion
 
+    //region Observers
     private fun initObservers() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
@@ -72,7 +77,9 @@ class SearchFragment : Fragment(), ArtistSelectionListener {
             }
         }
     }
+    //endregion
 
+    //region UI Setup
     private fun FragmentSearchBinding.setupUI(){
 
         searchButton.setOnClickListener {
@@ -97,10 +104,13 @@ class SearchFragment : Fragment(), ArtistSelectionListener {
             addItemDecoration(DividerItemDecoration(artistList.context, DividerItemDecoration.VERTICAL ))
         }
     }
+    //endregion
 
+    //region Listeners
     override fun onArtistSelected(artist: Artist) {
         val action = SearchFragmentDirections.actionLaunchTopAlbums(artist)
         findNavController().navigate(action)
     }
+    //endregion
 
 }

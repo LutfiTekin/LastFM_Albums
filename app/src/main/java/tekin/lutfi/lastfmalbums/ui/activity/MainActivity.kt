@@ -19,12 +19,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    //region Variables
     private val splashScreenViewModel: SplashScreenViewModel by viewModels()
 
     private val navController by lazy {
         findNavController(R.id.nav_host_fragment_activity_main)
     }
+    //endregion
 
+    //region LifeCycle Methods
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -54,4 +57,5 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+    //endregion
 }

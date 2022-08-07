@@ -38,12 +38,15 @@ class HomeFragment : Fragment(), LocalAlbumSelectionListener {
     }
     //endregion
 
+    //region Variables
     private val homeViewModel: HomeViewModel by viewModels()
 
     private val localAlbumsAdapter: LocalAlbumsAdapter by lazy {
         LocalAlbumsAdapter(this)
     }
+    //endregion
 
+    //region LifeCycle Methods
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -56,7 +59,9 @@ class HomeFragment : Fragment(), LocalAlbumSelectionListener {
         loadFavoriteAlbums()
         return root
     }
+    //endregion
 
+    //region UI Setup
     private fun loadFavoriteAlbums() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
@@ -80,9 +85,12 @@ class HomeFragment : Fragment(), LocalAlbumSelectionListener {
             )
         }
     }
+    //endregion
 
+    //region Listeners
     override fun onAlbumSelected(album: Album) {
         val action = HomeFragmentDirections.actionHomeToDetail(album)
         findNavController().navigate(action)
     }
+    //endregion
 }

@@ -27,7 +27,6 @@ import tekin.lutfi.lastfmalbums.utils.setFavorite
 @AndroidEntryPoint
 class AlbumDetailFragment : Fragment() {
 
-
     //region Viewbinding Setup
     private var _binding: AlbumDetailFragmentBinding? = null
 
@@ -41,12 +40,15 @@ class AlbumDetailFragment : Fragment() {
     }
     //endregion
 
+    //region Variables
     private val albumDetailViewModel: AlbumDetailViewModel by viewModels()
 
     private val args: AlbumDetailFragmentArgs by navArgs()
 
     private val tracksAdapter: TracksAdapter by lazy { TracksAdapter() }
+    //endregion
 
+    //region LifeCycle Methods
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -57,7 +59,9 @@ class AlbumDetailFragment : Fragment() {
         initObservers()
         return binding.root
     }
+    //endregion
 
+    //region Observers
     private fun initObservers() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -87,8 +91,9 @@ class AlbumDetailFragment : Fragment() {
         }
 
     }
+    //endregion
 
-
+    //region UI Setup
     private fun AlbumDetailFragmentBinding.setupUI() {
         albumItem.apply {
             albumName.text = args.album.name
@@ -120,4 +125,5 @@ class AlbumDetailFragment : Fragment() {
             )
         }
     }
+    //endregion
 }
