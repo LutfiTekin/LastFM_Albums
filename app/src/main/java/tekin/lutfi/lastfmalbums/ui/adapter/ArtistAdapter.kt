@@ -14,7 +14,8 @@ class ArtistAdapter(private val artistSelectionListener: ArtistSelectionListener
     ListAdapter<Artist, ArtistViewHolder>(ArtistDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistViewHolder {
-        val binding = ListItemArtistBinding.inflate(LayoutInflater.from(parent.context),  parent, false)
+        val binding =
+            ListItemArtistBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ArtistViewHolder(binding, artistSelectionListener)
     }
 
@@ -29,13 +30,16 @@ class ArtistAdapter(private val artistSelectionListener: ArtistSelectionListener
 class ArtistViewHolder internal constructor(
     private val binding: ListItemArtistBinding,
     private val artistSelectionListener: ArtistSelectionListener
-) : RecyclerView.ViewHolder(binding.root){
+) : RecyclerView.ViewHolder(binding.root) {
 
 
-    fun bind(artist: Artist) = binding.apply{
+    fun bind(artist: Artist) = binding.apply {
         artistName.text = artist.name
         artistImage.load(artist.image)
-        listenerCount.text = String.format(root.context.getString(R.string.listener_count),artist.listeners)
+        listenerCount.text = String.format(
+            root.context.getString(R.string.listener_count),
+            artist.formattedListeners
+        )
         root.setOnClickListener {
             artistSelectionListener.onArtistSelected(artist)
         }
