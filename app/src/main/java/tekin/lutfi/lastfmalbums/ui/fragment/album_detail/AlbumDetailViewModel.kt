@@ -26,6 +26,8 @@ class AlbumDetailViewModel @Inject constructor(
 
     fun loadAlbumTracks(album: Album) {
         viewModelScope.launch {
+            if (albumInfoState.value.data != null)
+                return@launch
             albumsUseCase.getAlbum(album.artist.orEmpty(), album.name.orEmpty()).collect { resource ->
                 when (resource) {
                     is Resource.Success -> _albumInfoState.value = UIState(data = resource.data)
