@@ -23,6 +23,7 @@ import tekin.lutfi.lastfmalbums.R
 import tekin.lutfi.lastfmalbums.databinding.AlbumDetailFragmentBinding
 import tekin.lutfi.lastfmalbums.ui.adapter.TracksAdapter
 import tekin.lutfi.lastfmalbums.utils.setFavorite
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AlbumDetailFragment : Fragment() {
@@ -41,9 +42,16 @@ class AlbumDetailFragment : Fragment() {
     //endregion
 
     //region Variables
-    private val albumDetailViewModel: AlbumDetailViewModel by viewModels()
 
     private val args: AlbumDetailFragmentArgs by navArgs()
+
+    @Inject
+    lateinit var albumDetailAssistedFactory: AlbumDetailViewModel.AlbumDetailAssistedFactory
+
+
+    private val albumDetailViewModel: AlbumDetailViewModel by viewModels{
+        AlbumDetailViewModel.providesFactory(assistedFactory = albumDetailAssistedFactory, args.album)
+    }
 
     private val tracksAdapter: TracksAdapter by lazy { TracksAdapter() }
     //endregion
@@ -55,7 +63,7 @@ class AlbumDetailFragment : Fragment() {
     ): View {
         _binding = AlbumDetailFragmentBinding.inflate(inflater, container, false)
         binding.setupUI()
-        albumDetailViewModel.loadAlbumTracks(args.album)
+
         initObservers()
         return binding.root
     }

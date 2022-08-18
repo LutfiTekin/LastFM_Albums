@@ -17,15 +17,6 @@ import javax.inject.Inject
 
 class AlbumUseCase @Inject constructor(private val repository: LastFMAlbumRepository, private val localAlbumRepository: LastFMLocalAlbumRepository) {
 
-    suspend fun getTopAlbums(artist: String): Flow<Resource<List<TopAlbum>?>> = sendRequest {
-        repository.getTopAlbums(artist)
-    }.map { resource ->
-        when(resource){
-            is Resource.Success -> Resource.Success(resource.data.topAlbums?.albums?.map { it.topAlbum })
-            is Resource.Loading -> Resource.Loading
-            is Resource.Error -> Resource.Error(resource.e)
-        }
-    }
 
     suspend fun getAlbumInfo(artist: String, album: String): Flow<Resource<Album?>> = sendRequest {
         repository.getAlbumInfo(artist, album)

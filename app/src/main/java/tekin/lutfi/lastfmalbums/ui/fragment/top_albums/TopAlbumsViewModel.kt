@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 import tekin.lutfi.lastfmalbums.domain.model.TopAlbum
 import tekin.lutfi.lastfmalbums.domain.model.album
 import tekin.lutfi.lastfmalbums.domain.use_case.albums.AlbumUseCase
+import tekin.lutfi.lastfmalbums.domain.use_case.top_albums.TopAlbumsUseCase
 import tekin.lutfi.lastfmalbums.ui.UIState
 import tekin.lutfi.lastfmalbums.utils.Resource
 
@@ -16,6 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TopAlbumsViewModel @Inject constructor(
+    private val topAlbumsUseCase: TopAlbumsUseCase,
     private val albumsUseCase: AlbumUseCase
 ) :
     ViewModel() {
@@ -26,7 +28,7 @@ class TopAlbumsViewModel @Inject constructor(
 
     fun loadTopAlbums(artist: String) {
         viewModelScope.launch {
-            albumsUseCase.getTopAlbums(artist).collect { resource ->
+            topAlbumsUseCase.getTopAlbums(artist).collect { resource ->
                 when (resource) {
                     is Resource.Success -> {
                         val list = resource.data ?: emptyList()
